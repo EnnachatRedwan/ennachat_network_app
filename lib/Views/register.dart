@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 import '../Style/style.dart';
 import '../Apis/register_api.dart';
 import './login.dart';
+import '../Apis/fields_api.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -81,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FieldsApi api = ModalRoute.of(context)!.settings.arguments as FieldsApi;
     return Scaffold(
       body: Center(
         child: ConstrainedBox(
@@ -135,6 +138,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const InputDecoration(labelText: 'Functionality'),
                       controller: functionalityController,
                       onChanged: (value) => resetController(_btnController1),
+                    ),
+                    DropdownSearch<String>(
+                      mode: Mode.MENU,
+                      showSelectedItems: true,
+                      items: api.Fields,
+                      dropdownSearchDecoration: const InputDecoration(
+                        labelText: "Functionality",
+                        hintText: "Select your functionality",
+                      ),
+                      popupItemDisabled: (String s) => s.startsWith('I'),
+                      onChanged: print,
                     ),
                   ],
                 ),
