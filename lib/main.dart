@@ -1,9 +1,11 @@
+import 'package:ennachat_network/Views/loading_screen.dart';
 import 'package:flutter/material.dart';
 
 import './Views/intro_page.dart';
 import './Views/login.dart';
 import './Views/home_page.dart';
-import 'Views/register.dart';
+import './Views/register.dart';
+import './Apis/fields_api.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (context) => const LoginScreen(),
         HomePage.routeName: (context) => const HomePage(),
         RegisterScreen.routeName: (context) => const RegisterScreen(),
+        LoadingScreen.routeName: (context) => const LoadingScreen(),
       },
       initialRoute: IntroScreen.routeName,
     );

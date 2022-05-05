@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../Style/style.dart';
 
 import './login.dart';
-import '../Apis/fields_api.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -11,8 +10,6 @@ class IntroScreen extends StatelessWidget {
   static const String routeName = '/intro';
 
   void switchToLogin(BuildContext ctx) async {
-    FieldsApi api = FieldsApi();
-    await api.fetchFields();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(ctx).pushReplacementNamed(LoginScreen.routeName);
     });

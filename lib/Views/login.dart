@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../Style/style.dart';
 import '../Apis/login_api.dart';
 import './home_page.dart';
 import './register.dart';
+import '../Apis/fields_api.dart';
+import './loading_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -119,9 +122,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.of(context)
-                            .pushReplacementNamed(RegisterScreen.routeName);
+                            .pushNamed(LoadingScreen.routeName);
+                        FieldsApi api = FieldsApi();
+                        await api.fetchFields();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pushReplacementNamed(
+                            RegisterScreen.routeName,
+                            arguments: api);
                       },
                       child: Text(
                         'Alredy have an account?',

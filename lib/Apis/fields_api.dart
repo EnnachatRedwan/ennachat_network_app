@@ -5,12 +5,11 @@ class FieldsApi {
   List<String> Fields = [];
 
   Future<void> fetchFields() async {
-    var url = Uri.parse('http://192.168.1.15:3000/fields');
+    var url = Uri.parse('http://192.168.1.104:3000/fields');
     var response = await http.get(url);
     var fields = jsonDecode(response.body)["fields"];
     for (String field in fields) {
       Fields.add(field);
     }
-    print(Fields);
   }
 }
