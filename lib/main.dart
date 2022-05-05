@@ -5,7 +5,6 @@ import './Views/intro_page.dart';
 import './Views/login.dart';
 import './Views/home_page.dart';
 import './Views/register.dart';
-import './Apis/fields_api.dart';
 
 void main() {
   runApp(const MyApp());
