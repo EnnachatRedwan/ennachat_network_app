@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
     controller.success();
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.of(context)
-          .pushReplacementNamed(HomePage.routeName, arguments: api);
+          .pushReplacementNamed(HomePage.routeName, arguments: api.user);
     });
   }
 

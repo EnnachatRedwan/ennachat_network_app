@@ -21,7 +21,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final passwordController = TextEditingController();
   final passwordConfirmController = TextEditingController();
   final nameController = TextEditingController();
-  final functionalityController = TextEditingController();
+  //final functionalityController = TextEditingController();
+  String functionality = "";
 
   void register(
       String email,
@@ -107,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextField(
-                      decoration: const InputDecoration(labelText: 'Login'),
+                      decoration: const InputDecoration(labelText: 'Email'),
                       controller: emailController,
                       onChanged: (value) => resetController(_btnController1),
                     ),
@@ -133,12 +134,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: nameController,
                       onChanged: (value) => resetController(_btnController1),
                     ),
-                    TextField(
-                      decoration:
-                          const InputDecoration(labelText: 'Functionality'),
-                      controller: functionalityController,
-                      onChanged: (value) => resetController(_btnController1),
-                    ),
+                    // TextField(
+                    //   decoration:
+                    //       const InputDecoration(labelText: 'Functionality'),
+                    //   controller: functionalityController,
+                    //   onChanged: (value) => resetController(_btnController1),
+                    // ),
                     DropdownSearch<String>(
                       mode: Mode.MENU,
                       showSelectedItems: true,
@@ -148,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: "Select your functionality",
                       ),
                       popupItemDisabled: (String s) => s.startsWith('I'),
-                      onChanged: print,
+                      onChanged: (value) => functionality = value!,
                     ),
                   ],
                 ),
@@ -164,7 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           passwordController.text,
                           passwordConfirmController.text,
                           nameController.text,
-                          functionalityController.text,
+                          functionality,
                           _btnController1),
                       child: const Padding(
                         padding:
