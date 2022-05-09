@@ -149,7 +149,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         hintText: "Select your functionality",
                       ),
                       popupItemDisabled: (String s) => s.startsWith('I'),
-                      onChanged: (value) => functionality = value!,
+                      onChanged: (value) {
+                        functionality = value!;
+                        resetController(_btnController1);
+                      },
                     ),
                   ],
                 ),
