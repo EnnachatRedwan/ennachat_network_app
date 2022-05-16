@@ -1,9 +1,10 @@
+import 'package:ennachat_network/Widgets/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Style/style.dart';
-import '../Models/user.dart';
 import '../Widgets/user_card.dart';
+import '../Models/current_user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,9 +18,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    User user = ModalRoute.of(context)!.settings.arguments as User;
+    Current_user current_user =
+        ModalRoute.of(context)!.settings.arguments as Current_user;
     return ChangeNotifierProvider.value(
-      value: user,
+      value: current_user,
       child: Scaffold(
         appBar: AppBar(actions: [
           IconButton(
@@ -28,7 +30,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ], backgroundColor: Style.appBarColor),
         body: Column(
-          children: const [UserCard()],
+          children: [
+            const UserCard(),
+            Posts(guid: current_user.GUID),
+          ],
         ),
       ),
     );

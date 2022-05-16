@@ -2,14 +2,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class FieldsApi {
-  List<String> Fields = [];
+  List<String> Functionalities = [];
 
   Future<void> fetchFields() async {
-    var url = Uri.parse('http://160.168.0.176:3000/fields');
+    var url = Uri.parse('http://192.168.1.121:3000/functionalities');
     var response = await http.get(url);
-    var fields = jsonDecode(response.body)["fields"];
-    for (String field in fields) {
-      Fields.add(field);
+    var functionalities = jsonDecode(response.body)["functionalities"];
+    for (String functionality in functionalities) {
+      Functionalities.add(functionality);
+      print(functionality);
     }
   }
 }

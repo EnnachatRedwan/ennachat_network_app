@@ -143,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     DropdownSearch<String>(
                       mode: Mode.MENU,
                       showSelectedItems: true,
-                      items: api.Fields,
+                      items: api.Functionalities,
                       dropdownSearchDecoration: const InputDecoration(
                         labelText: "Functionality",
                         hintText: "Select your functionality",
@@ -174,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                         child: Text(
-                          'Login',
+                          'REGISTER',
                           style: TextStyle(fontSize: 25),
                         ),
                       ),

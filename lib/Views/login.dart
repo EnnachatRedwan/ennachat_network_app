@@ -51,8 +51,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void success(RoundedLoadingButtonController controller, LoginApi api) {
     controller.success();
     Future.delayed(const Duration(seconds: 1), () {
-      Navigator.of(context)
-          .pushReplacementNamed(HomePage.routeName, arguments: api.user);
+      Navigator.of(context).pushReplacementNamed(HomePage.routeName,
+          arguments: api.current_user);
     });
   }
 
